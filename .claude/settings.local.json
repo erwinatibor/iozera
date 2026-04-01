@@ -9,7 +9,16 @@
       "Bash(cp -rf docs/favicon .)",
       "Bash(cp -rf docs/fonts .)",
       "Bash(cp -rf docs/video .)",
-      "Bash(cp -rf docs/contact .)"
+      "Bash(cp -rf docs/contact .)",
+      "Bash(cp -rf docs/_nuxt .)",
+      "Bash(cp -f docs/_payload*.json .)",
+      "Bash(cp -f docs/.nojekyll .)",
+      "Bash(cp -f docs/index.html .)",
+      "Bash(for dir:*)",
+      "Bash(ls d:/iozera/index.html d:/iozera/.nojekyll d:/iozera/_nuxt/*.css d:/iozera/_nuxt/*.js)",
+      "Bash(while read:*)",
+      "Bash(do sed:*)",
+      "Bash(ls d:/iozera/index.html d:/iozera/.nojekyll d:/iozera/_nuxt/*.js d:/iozera/_nuxt/*.css d:/iozera/fonts/ d:/iozera/video/ d:/iozera/favicon/)"
     ]
   }
 }
