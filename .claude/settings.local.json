@@ -22,7 +22,14 @@
       "Bash(node serve.mjs)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003)",
       "Bash(npm run:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(curl -s http://localhost:3003/team)",
+      "Bash(curl -s \"https://a.storyblok.com/f/291553749692680/300x86/8c157deb01/application-layer.svg\" -o \"d:/iozera/assets/images/application-layer.svg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\" http://localhost:3003/assets/images/application-layer.svg)",
+      "Bash(grep -l \"data-v-72c67ebc\" d:/iozera/*.html d:/iozera/news/*.html d:/iozera/docs/*.html)",
+      "Bash(grep -oE '<[a-z]+ class=\"[^\"]*\"[^>]{0,200}class=\"carousel\"' d:/iozera/news/index.html)",
+      "Bash(grep -oE '[a-z-]+=\"[^\"]*\"[^>]{0,150}<[^>]*class=\"carousel\"' d:/iozera/news/index.html)"
     ]
   }
 }

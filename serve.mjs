@@ -27,16 +27,17 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  let urlPath = req.url.split('?')[0];
+  let urlPath = decodeURIComponent(req.url.split('?')[0]);
   if (urlPath === '/') urlPath = '/index.html';
 
   let filePath = path.join(__dirname, urlPath);
 
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    filePath = path.join(filePath, 'index.html');
+  }
   if (!fs.existsSync(filePath)) {
     const withHtml = filePath + '.html';
-    const indexHtml = path.join(filePath, 'index.html');
     if (fs.existsSync(withHtml)) filePath = withHtml;
-    else if (fs.existsSync(indexHtml)) filePath = indexHtml;
     else {
       res.writeHead(404);
       res.end('Not found');
@@ -53,7 +54,7 @@ http.createServer((req, res) => {
       res.end('Server error');
       return;
     }
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-store, no-cache, must-revalidate', 'Pragma': 'no-cache' });
     res.end(data);
   });
 }).listen(PORT, () => {
