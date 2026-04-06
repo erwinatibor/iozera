@@ -39,15 +39,15 @@ setInterval(function(){
   all.forEach(function(el){
     var t = (el.textContent||'').trim();
     if(t.indexOf('Infrastructure gets built') !== -1 && t.length < 250){
-      el.style.setProperty('margin-top','0','important');
+      el.style.setProperty('margin-top','-22vw','important');
       el.style.setProperty('padding-top','0','important');
-      el.style.setProperty('transform','translateY(-18vw)','important');
       el.style.setProperty('position','relative','important');
       el.style.setProperty('z-index','5','important');
       var p = el.parentElement;
       for(var i=0;i<5 && p;i++){
         p.style.setProperty('margin-top','0','important');
         p.style.setProperty('padding-top','0','important');
+        p.style.setProperty('min-height','0','important');
         p = p.parentElement;
       }
     }
