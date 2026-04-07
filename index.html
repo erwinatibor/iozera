@@ -355,8 +355,32 @@ setInterval(function(){
     {
       img: 'https://a.storyblok.com/f/291553749692680/1422x832/f4d5d89a61/asset-update.png',
       label: 'ASSET UPDATE',
-      date: 'FEBRUARY 24, 2026',
+      date: 'January 2025',
       title: "Iozera's Roark Data Centre Goes Live 4.5MW Operational in Houston"
+    },
+    {
+      img: 'https://a.storyblok.com/f/291553749692680/2718x1620/1847d5b2d0/financial.png',
+      label: 'FINANCIAL',
+      date: 'July 2025',
+      title: 'Iozera Projects 10-Year Revenue Growth with EBITDA Margins Expanding to 78.7%'
+    },
+    {
+      img: 'https://a.storyblok.com/f/291553749692680/1920x1080/2b3a7b0a34/ai-factory.jpg',
+      label: 'AI FACTORY',
+      date: 'June 2025',
+      title: 'Iozera Introduces the AI Factory A Full-Stack Model Training and Deployment Facility'
+    },
+    {
+      img: 'https://a.storyblok.com/f/291553749692680/3840x2160/1cd50af076/compute.png',
+      label: 'COMPUTE',
+      date: 'May 2025',
+      title: 'Iozera Begins Staged Capital Deployment at Roark Phase 2 Expansion to 10MW'
+    },
+    {
+      img: 'https://a.storyblok.com/f/291553749692680/3840x2160/68e6ec4a3a/technology.png',
+      label: 'TECHNOLOGY',
+      date: 'April 2025',
+      title: 'Iozera Announces GPU Cluster Roadmap GB300 Blackwell and R200 Rubin for 2026–2027'
     }
   ];
   var current = 0;
@@ -371,45 +395,46 @@ setInterval(function(){
 
     var carousel = document.createElement('div');
     carousel.id = 'iozera-carousel';
-    carousel.style.cssText = 'position:relative;width:90vw;max-width:1200px;margin:2rem auto;padding:0 4rem;box-sizing:border-box;display:block;left:50%;transform:translateX(-50%);grid-column:1/-1;';
+    carousel.style.cssText = 'position:relative;width:90vw;max-width:1400px;height:520px;margin:3rem auto;box-sizing:border-box;display:block;grid-column:1/-1;justify-self:center;perspective:1600px;';
 
-    var inner = document.createElement('div');
-    inner.style.cssText = 'position:relative;overflow:hidden;border-radius:20px;';
-    var track = document.createElement('div');
-    track.id = 'slides-track';
-    track.style.cssText = 'display:flex;transition:transform 0.5s ease;';
-    inner.appendChild(track);
-    carousel.appendChild(inner);
+    var stage = document.createElement('div');
+    stage.id = 'cf-stage';
+    stage.style.cssText = 'position:relative;width:100%;height:100%;transform-style:preserve-3d;';
+    carousel.appendChild(stage);
 
     var prevBtn = document.createElement('button');
     prevBtn.innerHTML = '&#10094;';
-    prevBtn.style.cssText = 'position:absolute;left:0;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:24px;z-index:2;';
+    prevBtn.style.cssText = 'position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.95);border:none;cursor:pointer;font-size:24px;z-index:20;box-shadow:0 4px 18px rgba(0,0,0,0.25);';
     carousel.appendChild(prevBtn);
 
     var nextBtn = document.createElement('button');
     nextBtn.innerHTML = '&#10095;';
-    nextBtn.style.cssText = 'position:absolute;right:0;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:24px;z-index:2;';
+    nextBtn.style.cssText = 'position:absolute;right:1rem;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.95);border:none;cursor:pointer;font-size:24px;z-index:20;box-shadow:0 4px 18px rgba(0,0,0,0.25);';
     carousel.appendChild(nextBtn);
 
     var dots = document.createElement('div');
     dots.id = 'iozera-dots';
-    dots.style.cssText = 'display:flex;justify-content:center;gap:10px;margin-top:1.5rem;';
+    dots.style.cssText = 'display:flex;justify-content:center;gap:10px;margin-top:1.5rem;position:absolute;left:0;right:0;bottom:-2.5rem;';
     carousel.appendChild(dots);
 
     existing[0].parentNode.insertBefore(carousel, existing[0]);
 
+    var slideEls = [];
     slides.forEach(function(s, i) {
       var slide = document.createElement('div');
-      slide.style.cssText = 'min-width:100%;box-sizing:border-box;background:#1a1a1a;';
+      slide.className = 'cf-slide';
+      slide.style.cssText = 'position:absolute;top:50%;left:50%;width:560px;max-width:70vw;height:440px;margin-left:-280px;margin-top:-220px;background:#1a1a1a;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.45);transition:transform 0.7s cubic-bezier(.22,.61,.36,1),opacity 0.7s,filter 0.7s;transform-style:preserve-3d;cursor:pointer;';
       var img = document.createElement('img');
       img.src = s.img;
-      img.style.cssText = 'width:100%;height:auto;display:block;max-height:500px;object-fit:cover;';
+      img.style.cssText = 'width:100%;height:65%;display:block;object-fit:cover;';
       var info = document.createElement('div');
-      info.style.cssText = 'padding:2rem;';
-      info.innerHTML = '<div style="color:#888;font-size:0.85rem;letter-spacing:0.1em;margin-bottom:0.5rem;">' + s.label + ' &middot; ' + s.date + '</div><h3 style="color:#fff;font-size:1.6rem;margin:0;font-weight:300;line-height:1.3;">' + s.title + '</h3>';
+      info.style.cssText = 'padding:1.5rem 1.75rem;';
+      info.innerHTML = '<div style="color:#9ca3af;font-size:0.78rem;letter-spacing:0.12em;margin-bottom:0.55rem;text-transform:uppercase;">' + s.label + ' &middot; ' + s.date + '</div><h3 style="color:#fff;font-size:1.35rem;margin:0;font-weight:300;line-height:1.3;">' + s.title + '</h3>';
       slide.appendChild(img);
       slide.appendChild(info);
-      track.appendChild(slide);
+      slide.addEventListener('click', function() { current = i; update(); });
+      stage.appendChild(slide);
+      slideEls.push(slide);
 
       var dot = document.createElement('button');
       dot.style.cssText = 'width:10px;height:10px;border-radius:50%;border:none;background:#555;cursor:pointer;padding:0;';
@@ -418,7 +443,23 @@ setInterval(function(){
     });
 
     function update() {
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      var n = slideEls.length;
+      slideEls.forEach(function(el, i) {
+        var diff = i - current;
+        if (diff > n/2) diff -= n;
+        if (diff < -n/2) diff += n;
+        var abs = Math.abs(diff);
+        var x = diff * 320;
+        var z = -abs * 280;
+        var rotY = diff === 0 ? 0 : (diff > 0 ? -38 : 38);
+        var scale = diff === 0 ? 1 : 0.85;
+        var opacity = abs > 2 ? 0 : (abs === 0 ? 1 : 0.65);
+        el.style.transform = 'translate3d(' + x + 'px,0,' + z + 'px) rotateY(' + rotY + 'deg) scale(' + scale + ')';
+        el.style.opacity = opacity;
+        el.style.zIndex = 100 - abs;
+        el.style.filter = diff === 0 ? 'none' : 'brightness(0.7)';
+        el.style.pointerEvents = abs > 2 ? 'none' : 'auto';
+      });
       Array.from(dots.children).forEach(function(d, i) {
         d.style.background = i === current ? '#fff' : '#555';
       });
@@ -428,7 +469,6 @@ setInterval(function(){
     nextBtn.addEventListener('click', function() { current = (current + 1) % slides.length; update(); });
 
     update();
-    setInterval(function() { current = (current + 1) % slides.length; update(); }, 5000);
   }
 
   setInterval(buildCarousel, 1000);
