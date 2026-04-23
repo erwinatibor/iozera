@@ -33,7 +33,9 @@
       "Bash(claude skill *)",
       "Bash(where claude *)",
       "Bash(git clone *)",
-      "Bash(npx uipro-cli *)"
+      "Bash(npx uipro-cli *)",
+      "Bash(gh repo *)",
+      "Bash(gh auth *)"
     ]
   }
 }
