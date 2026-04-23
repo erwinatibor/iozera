@@ -29,7 +29,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\" http://localhost:3003/assets/images/application-layer.svg)",
       "Bash(grep -l \"data-v-72c67ebc\" d:/iozera/*.html d:/iozera/news/*.html d:/iozera/docs/*.html)",
       "Bash(grep -oE '<[a-z]+ class=\"[^\"]*\"[^>]{0,200}class=\"carousel\"' d:/iozera/news/index.html)",
-      "Bash(grep -oE '[a-z-]+=\"[^\"]*\"[^>]{0,150}<[^>]*class=\"carousel\"' d:/iozera/news/index.html)"
+      "Bash(grep -oE '[a-z-]+=\"[^\"]*\"[^>]{0,150}<[^>]*class=\"carousel\"' d:/iozera/news/index.html)",
+      "Bash(claude skill *)",
+      "Bash(where claude *)",
+      "Bash(git clone *)",
+      "Bash(npx uipro-cli *)"
     ]
   }
 }
